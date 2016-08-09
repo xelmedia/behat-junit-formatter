@@ -1,10 +1,14 @@
 {
-    "name": "jarnaiz/behat-junit-formatter",
+    "name": "xel/jarnaiz-behat-junit-formatter",
     "description": "Behat 3 JUnit xml formatter",
     "authors": [
         {
             "name": "Jesús Arnaiz",
             "email": "j.arnaiz@gmail.com"
+        },
+        {
+            "name": "Theo van Oostrum",
+            "email": "theo@liberta.nl"
         }
     ],
     "require": {
@@ -18,9 +22,5 @@
             "jarnaiz\\JUnitFormatter\\": "src/"
         }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "v1.0.x-dev"
-        }
-    }
+    "version": "0.9"
 }

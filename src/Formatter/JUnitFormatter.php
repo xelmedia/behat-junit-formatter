@@ -247,6 +247,8 @@ class JUnitFormatter implements Formatter
 
                 $failureText = $event->getStep()->getKeyword() . " " . $event->getStep()->getText() . ":\n\n" . $event->getTestResult()->getException()->getMessage();
 
+                $failureText .= $event->getTestResult()->getException()->getTraceAsString();
+
                 // add cdata
                 $node = dom_import_simplexml($failureNode);
                 $no = $node->ownerDocument;
