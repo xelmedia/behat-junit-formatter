@@ -246,7 +246,7 @@ class JUnitFormatter implements Formatter
                 $failureNode = $this->currentTestcase->addChild('failure');
 
                 $failureText = $event->getStep()->getKeyword() . " " . $event->getStep()->getText() . ":\n\n" . $event->getTestResult()->getException()->getMessage();
-
+                $failureText .= "\n\nStack Trace:\n\n";
                 $failureText .= $event->getTestResult()->getException()->getTraceAsString();
 
                 // add cdata
