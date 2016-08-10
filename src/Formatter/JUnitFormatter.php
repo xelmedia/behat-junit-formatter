@@ -118,7 +118,7 @@ class JUnitFormatter implements Formatter
     /**
      * getOutputPrinter
      *
-     * @return OutputPrinter
+     * @return FileOutputPrinter
      */
     public function getOutputPrinter()
     {
