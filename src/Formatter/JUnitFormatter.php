@@ -201,7 +201,9 @@ class JUnitFormatter implements Formatter
     public function beforeScenario(ScenarioTested $event)
     {
         $this->currentTestcase = $this->currentTestsuite->addChild('testcase');
-        $this->currentTestcase->addAttribute('name', $event->getScenario()->getTitle());
+        $title = $event->getScenario()->getTitle();
+        $normalizedTitle = strtolower(str_replace(" ", "_", $title));
+        $this->currentTestcase->addAttribute('name', $normalizedTitle);
 
         $this->testcaseTimer->start();
     }
