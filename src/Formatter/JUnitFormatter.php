@@ -118,7 +118,7 @@ class JUnitFormatter implements Formatter
     /**
      * getOutputPrinter
      *
-     * @return FileOutputPrinter
+     * @return OutputPrinter
      */
     public function getOutputPrinter()
     {
@@ -201,9 +201,7 @@ class JUnitFormatter implements Formatter
     public function beforeScenario(ScenarioTested $event)
     {
         $this->currentTestcase = $this->currentTestsuite->addChild('testcase');
-        $title = $event->getScenario()->getTitle();
-        $normalizedTitle = strtolower(str_replace(" ", "_", $title));
-        $this->currentTestcase->addAttribute('name', $normalizedTitle);
+        $this->currentTestcase->addAttribute('name', $event->getScenario()->getTitle());
 
         $this->testcaseTimer->start();
     }
@@ -282,6 +280,14 @@ class JUnitFormatter implements Formatter
 
         $this->currentTestcase->addAttribute('time', \round($this->testcaseTimer->getTime(), 3));
         $this->currentTestcase->addAttribute('status', $testResultString[$code]);
+
+
+        if(TestResult::SKIPPED === $code) {
+            $skippedNode = $this->currentTestcase->addChild('skipped');
+            // add cdata
+            $node = dom_import_simplexml($skippedNode);
+            $no = $node->ownerDocument;
+        }
     }
 
     /**
